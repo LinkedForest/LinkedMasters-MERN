@@ -16,7 +16,10 @@ Route.get('/:ConferenceId', Conferences.GetConferenceById);
 // Update Conference By ID
 Route.put('/:ConferenceId', Conferences.UpdateConferenceById);
 
-// Delete Conference By ID
-Route.delete('/:ConferenceId',  Conferences.DeleteConferenceById);
+// Soft Delete Conference By ID
+Route.delete('/:ConferenceId',  Conferences.SoftDeleteConferenceById);
+
+// Force Delete Conference By ID
+Route.delete('/:ConferenceId',  Conferences.ForceDeleteConferenceById);
 
 export default Route;
