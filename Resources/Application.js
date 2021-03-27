@@ -1,8 +1,11 @@
 import Express from 'express';
 import Morgan from 'morgan';
 
+// Settings
+import EndUsersSettings from './Settings/EndUsers/EndUsersSettigs';
+
 // Import Routes
-import AuthenticationRouters from "./Routes/Authentication/AuthenticationRoutes";
+import EndUsersRouters from "./Routes/Authentication/EndUsers/EndUsersRoutes";
 import ConferencesRouters from "./Routes/Conferences/ConferencesRoutes";
 
 //  Main Application
@@ -15,8 +18,14 @@ Application.use(Morgan('tiny'));
 // DotENV Variable
 require('dotenv/config');
 
+// End Users Creator
+EndUsersSettings().then();
+
 // Application Routes
 const API_URL = process.env.API_URL;
+
+// EndUsers Routes
+Application.use(`${API_URL}/auth`, EndUsersRouters);
 
 // Conferences Routes
 Application.use(`${API_URL}/conferences`, ConferencesRouters);
