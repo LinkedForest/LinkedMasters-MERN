@@ -5,8 +5,9 @@ import Morgan from 'morgan';
 import EndUsersSettings from './Settings/EndUsers/EndUsersSettigs';
 
 // Import Routes
-import EndUsersRouters from "./Routes/Authentication/EndUsers/EndUsersRoutes";
+import EndUsersAuthRouters from "./Routes/Authentication/EndUsers/EndUsersAuthRoutes";
 import ConferencesRouters from "./Routes/Conferences/ConferencesRoutes";
+import EndUsersRouters from "./Routes/EndUsers/EndUsersRoutes";
 
 //  Main Application
 const Application = Express();
@@ -24,10 +25,13 @@ EndUsersSettings().then();
 // Application Routes
 const API_URL = process.env.API_URL;
 
-// EndUsers Routes
-Application.use(`${API_URL}/auth`, EndUsersRouters);
+// End Users Auth Routes
+Application.use(`${API_URL}/auth`, EndUsersAuthRouters);
 
 // Conferences Routes
 Application.use(`${API_URL}/conferences`, ConferencesRouters);
+
+// End User Routes
+Application.use(`${API_URL}/end-user`, EndUsersRouters);
 
 export default Application;

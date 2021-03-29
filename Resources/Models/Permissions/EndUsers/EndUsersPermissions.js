@@ -8,4 +8,5 @@ const EndUsersPermissionsSchema = new Schema({
     versionKey: false
 });
 
+export const EndUsersPermissions = ["User", "Moderator", "Admin"];
 export default model('EndUsersPermissions', EndUsersPermissionsSchema);

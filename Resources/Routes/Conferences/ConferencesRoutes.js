@@ -1,20 +1,21 @@
 import { Router } from 'express';
 const Route = Router();
 
-// Conferences Controllers
+// Controllers
 import * as Conferences from '../../Controllers/Conferences/ConferencesControllers';
 
-// JWT Middlewares
+// Middlewares
 import { VerifyToken } from '../../Middlewares/JWT/JWTMiddlewares';
+import { EndUserAdminToken, EndUserModeratorToken } from '../../Middlewares/EndUsers/EndUsersVerified';
 
 // Get All Conferences
-Route.get('/', VerifyToken, Conferences.GetAllConferences);
+Route.get('/', [VerifyToken, EndUserAdminToken], Conferences.GetAllConferences);
 
 // Create New Conference
 Route.post('/', Conferences.CreateNewConference);
 
 // Get Conference By ID
-Route.get('/:ConferenceId', Conferences.GetConferenceById);
+Route.get('/:ConferenceId', [VerifyToken, EndUserModeratorToken], Conferences.GetConferenceById);
 
 // Update Conference By ID
 Route.put('/:ConferenceId', Conferences.UpdateConferenceById);

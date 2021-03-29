@@ -1,8 +1,8 @@
 import { Router } from 'express';
 const Route = Router();
 
-// Authentication Controllers
-import * as EndUsers from '../../../Controllers/Authentication/EndUsers/EndUsersControllers';
+// Controllers
+import * as EndUsers from '../../../Controllers/Authentication/EndUsers/EndUsersAuthControllers';
 
 // Login
 Route.post('/login', EndUsers.Login);
