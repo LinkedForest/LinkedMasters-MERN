@@ -1,7 +1,18 @@
 import { EndUsersPermissions } from '../../Models/Permissions/EndUsers/EndUsersPermissions';
 
+// Check End User Email
+export const CheckEndUsersEmail = async (Request, Response, NextFunction) => {
+    const EndUser = await EndUsers.findOne({email: Request.body.email});
+    if (EndUser) {
+        return Response.json({
+            message: "EndUser Already Existing"
+        })
+    }
+    NextFunction();
+}
+
 // Check End User Permissions
-const CheckEndUsersPermissions = async (Request, Response, NextFunction) => {
+export const CheckEndUsersPermissions = async (Request, Response, NextFunction) => {
     const Permissions = Request.body.permissions
     if (Permissions) {
         for (let i = 0; i < Permissions.length; i++) {
@@ -14,5 +25,3 @@ const CheckEndUsersPermissions = async (Request, Response, NextFunction) => {
     }
     NextFunction();
 }
-
-export default CheckEndUsersPermissions;
