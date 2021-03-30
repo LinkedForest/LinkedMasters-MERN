@@ -5,7 +5,7 @@ const Route = Router();
 import * as EndUsers from '../../../Controllers/Authentication/EndUsers/EndUsersAuthControllers';
 
 // Middlewares
-import { CheckEndUsersPermissions, CheckEndUsersEmail } from '../../../Middlewares/EndUsers/EndUsersPermissions';
+import { CheckEndUsersPermissions, CheckEndUsersEmail } from '../../../Middlewares/EndUsers/EndUsersChecks';
 
 // Login
 Route.post('/login', EndUsers.Login);
