@@ -1,11 +1,13 @@
+// import EndUsers from "../../Models/Authentication/EndUsers/EndUsersModels";
+
 // Create New End User
 export const CreateNewEndUser = async (Request, Response) => {
-    // const { title, description, category, image, start_date, end_date } = Request.body;
-    // const NewConference = new Conferences({ title, description, category, image, start_date, end_date });
-    // const SaveNewConference = await NewConference.save();
+    // const { full_name, email, password, mobile, image, country, birthdate, permissions } = Request.body;
+    // const NewEndUser = new EndUsers({ full_name, email, password: await EndUsers.EncryptPassword(password), mobile, image, country, birthdate });
+    // const SaveNewEndUser = await NewEndUser.save();
 
     Response.status(201).json({
-        // data: SaveNewConference,
+        // data: SaveNewEndUser,
         message: "New EndUser Has Been Created"
     });
 }
