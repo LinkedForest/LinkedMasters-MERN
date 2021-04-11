@@ -12,7 +12,7 @@ import { EndUserAdminToken, EndUserModeratorToken } from '../../Middlewares/EndU
 Route.get('/', VerifyToken, Conferences.GetAllConferences);
 
 // Create New Conference
-Route.post('/', [VerifyToken, EndUserAdminToken, EndUserModeratorToken], Conferences.CreateNewConference);
+Route.post('/', [VerifyToken, EndUserModeratorToken], Conferences.CreateNewConference);
 
 // Get Conference By ID
 Route.get('/:ConferenceId', VerifyToken, Conferences.GetConferenceById);
