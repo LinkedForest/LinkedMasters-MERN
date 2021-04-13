@@ -12,8 +12,8 @@ export const GetAllConferences = async (Request, Response) => {
 
 // Create New Conference
 export const CreateNewConference = async (Request, Response) => {
-    const { title, description, category, image, start_date, end_date } = Request.body;
-    const NewConference = new Conferences({ title, description, category, image, start_date, end_date });
+    const { title, description, logo_image, start_date, start_time, theme_color, auth_pages } = Request.body;
+    const NewConference = new Conferences({ title, description, logo_image, start_date, start_time, theme_color, auth_pages });
     const SaveNewConference = await NewConference.save();
 
     Response.status(201).json({
