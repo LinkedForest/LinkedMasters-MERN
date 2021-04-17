@@ -11,7 +11,7 @@ var _express = require("express");
 
 var EndUsers = _interopRequireWildcard(require("../../../Controllers/Authentication/EndUsers/EndUsersAuthControllers"));
 
-var _EndUsersPermissions = require("../../../Middlewares/EndUsers/EndUsersPermissions");
+var _EndUsersChecks = require("../../../Middlewares/EndUsers/EndUsersChecks");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -22,6 +22,6 @@ var Route = (0, _express.Router)(); // Controllers
 // Login
 Route.post('/login', EndUsers.Login); // Register
 
-Route.post('/register', [_EndUsersPermissions.CheckEndUsersPermissions, _EndUsersPermissions.CheckEndUsersEmail], EndUsers.Register);
+Route.post('/register', [_EndUsersChecks.CheckEndUsersPermissions, _EndUsersChecks.CheckEndUsersEmail], EndUsers.Register);
 var _default = Route;
 exports["default"] = _default;

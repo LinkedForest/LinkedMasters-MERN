@@ -22,16 +22,16 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var Route = (0, _express.Router)(); // Controllers
 
 // Get All Conferences
-Route.get('/', [_JWTMiddlewares.VerifyToken, _EndUsersVerified.EndUserAdminToken], Conferences.GetAllConferences); // Create New Conference
+Route.get('/', _JWTMiddlewares.VerifyToken, Conferences.GetAllConferences); // Create New Conference
 
-Route.post('/', Conferences.CreateNewConference); // Get Conference By ID
+Route.post('/', [_JWTMiddlewares.VerifyToken, _EndUsersVerified.EndUserModeratorToken], Conferences.CreateNewConference); // Get Conference By ID
 
-Route.get('/:ConferenceId', [_JWTMiddlewares.VerifyToken, _EndUsersVerified.EndUserModeratorToken], Conferences.GetConferenceById); // Update Conference By ID
+Route.get('/:ConferenceId', _JWTMiddlewares.VerifyToken, Conferences.GetConferenceById); // Update Conference By ID
 
-Route.put('/:ConferenceId', Conferences.UpdateConferenceById); // Soft Delete Conference By ID
+Route.put('/:ConferenceId', [_JWTMiddlewares.VerifyToken, _EndUsersVerified.EndUserAdminToken], Conferences.UpdateConferenceById); // Soft Delete Conference By ID
 
-Route["delete"]('/:ConferenceId', Conferences.SoftDeleteConferenceById); // Force Delete Conference By ID
+Route["delete"]('/:ConferenceId', [_JWTMiddlewares.VerifyToken, _EndUsersVerified.EndUserAdminToken], Conferences.SoftDeleteConferenceById); // Force Delete Conference By ID
 
-Route["delete"]('/:ConferenceId', Conferences.ForceDeleteConferenceById);
+Route["delete"]('/:ConferenceId/force-delete', [_JWTMiddlewares.VerifyToken, _EndUsersVerified.EndUserAdminToken], Conferences.ForceDeleteConferenceById);
 var _default = Route;
 exports["default"] = _default;

@@ -9,6 +9,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+// import EndUsers from "../../Models/Authentication/EndUsers/EndUsersModels";
 // Create New End User
 var CreateNewEndUser = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(Request, Response) {
@@ -16,11 +17,11 @@ var CreateNewEndUser = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            // const { title, description, category, image, start_date, end_date } = Request.body;
-            // const NewConference = new Conferences({ title, description, category, image, start_date, end_date });
-            // const SaveNewConference = await NewConference.save();
+            // const { full_name, email, password, mobile, image, country, birthdate, permissions } = Request.body;
+            // const NewEndUser = new EndUsers({ full_name, email, password: await EndUsers.EncryptPassword(password), mobile, image, country, birthdate });
+            // const SaveNewEndUser = await NewEndUser.save();
             Response.status(201).json({
-              // data: SaveNewConference,
+              // data: SaveNewEndUser,
               message: "New EndUser Has Been Created"
             });
 

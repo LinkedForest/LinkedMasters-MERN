@@ -49,20 +49,21 @@ exports.GetAllConferences = GetAllConferences;
 
 var CreateNewConference = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(Request, Response) {
-    var _Request$body, title, description, category, image, start_date, end_date, NewConference, SaveNewConference;
+    var _Request$body, title, description, logo_image, start_date, start_time, theme_color, auth_pages, NewConference, SaveNewConference;
 
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _Request$body = Request.body, title = _Request$body.title, description = _Request$body.description, category = _Request$body.category, image = _Request$body.image, start_date = _Request$body.start_date, end_date = _Request$body.end_date;
+            _Request$body = Request.body, title = _Request$body.title, description = _Request$body.description, logo_image = _Request$body.logo_image, start_date = _Request$body.start_date, start_time = _Request$body.start_time, theme_color = _Request$body.theme_color, auth_pages = _Request$body.auth_pages;
             NewConference = new _ConferencesModels["default"]({
               title: title,
               description: description,
-              category: category,
-              image: image,
+              logo_image: logo_image,
               start_date: start_date,
-              end_date: end_date
+              start_time: start_time,
+              theme_color: theme_color,
+              auth_pages: auth_pages
             });
             _context2.next = 4;
             return NewConference.save();

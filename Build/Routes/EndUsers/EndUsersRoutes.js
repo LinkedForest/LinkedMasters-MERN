@@ -15,7 +15,7 @@ var _JWTMiddlewares = require("../../Middlewares/JWT/JWTMiddlewares");
 
 var _EndUsersVerified = require("../../Middlewares/EndUsers/EndUsersVerified");
 
-var _EndUsersPermissions = require("../../Middlewares/EndUsers/EndUsersPermissions");
+var _EndUsersChecks = require("../../Middlewares/EndUsers/EndUsersChecks");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -24,6 +24,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var Route = (0, _express.Router)(); // Controllers
 
 // Create New End User
-Route.post('/', [_JWTMiddlewares.VerifyToken, _EndUsersVerified.EndUserAdminToken, _EndUsersPermissions.CheckEndUsersPermissions, _EndUsersPermissions.CheckEndUsersEmail], EndUsers.CreateNewEndUser);
+Route.post('/', [_JWTMiddlewares.VerifyToken, _EndUsersVerified.EndUserAdminToken, _EndUsersChecks.CheckEndUsersPermissions, _EndUsersChecks.CheckEndUsersEmail], EndUsers.CreateNewEndUser);
 var _default = Route;
 exports["default"] = _default;

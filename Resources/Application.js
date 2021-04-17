@@ -7,6 +7,7 @@ import EndUsersSettings from './Settings/EndUsers/EndUsersSettigs';
 // Import Routes
 import EndUsersAuthRouters from "./Routes/Authentication/EndUsers/EndUsersAuthRoutes";
 import ConferencesRouters from "./Routes/Conferences/ConferencesRoutes";
+import ConferencesAuthPagesRouters from "./Routes/Conferences/ConferencesAuthRoutes/ConferencesAuthRoutes";
 import EndUsersRouters from "./Routes/EndUsers/EndUsersRoutes";
 
 //  Main Application
@@ -30,6 +31,9 @@ Application.use(`${API_URL}/auth`, EndUsersAuthRouters);
 
 // Conferences Routes
 Application.use(`${API_URL}/conferences`, ConferencesRouters);
+
+// Conferences Auth. Pages Routes
+Application.use(`${API_URL}/conferences/:ConferenceId`, ConferencesAuthPagesRouters);
 
 // End User Routes
 Application.use(`${API_URL}/end-user`, EndUsersRouters);

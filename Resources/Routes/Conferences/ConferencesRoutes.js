@@ -9,7 +9,7 @@ import { VerifyToken } from '../../Middlewares/JWT/JWTMiddlewares';
 import { EndUserAdminToken, EndUserModeratorToken } from '../../Middlewares/EndUsers/EndUsersVerified';
 
 // Get All Conferences
-Route.get('/', VerifyToken, Conferences.GetAllConferences);
+Route.get('/', Conferences.GetAllConferences);
 
 // Create New Conference
 Route.post('/', [VerifyToken, EndUserModeratorToken], Conferences.CreateNewConference);

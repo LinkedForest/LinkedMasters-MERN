@@ -27,7 +27,7 @@ export const Login = async (Request, Response) => {
         data: TokenJWT,
         message: "EndUser Is Found"
     });
-}
+};
 
 // Registration
 export const Register = async (Request, Response) => {
@@ -67,4 +67,4 @@ export const Register = async (Request, Response) => {
         data: TokenJWT,
         message: "New EndUser Has Been Created"
     });
-}
+};

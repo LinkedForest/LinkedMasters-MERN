@@ -22,11 +22,7 @@ var ConferencesSchema = new _mongoose.Schema({
     required: true,
     "default": "It's New Conference"
   },
-  category: {
-    type: String,
-    required: true
-  },
-  image: {
+  logo_image: {
     type: String,
     required: true
   },
@@ -35,11 +31,18 @@ var ConferencesSchema = new _mongoose.Schema({
     required: true,
     "default": new Date().toISOString()
   },
-  end_date: {
-    type: Date,
-    required: true,
-    "default": new Date().toISOString()
-  }
+  start_time: {
+    type: String,
+    required: true
+  },
+  theme_color: {
+    type: String,
+    required: true
+  },
+  auth_pages: [{
+    ref: "ConferencesAuthPages",
+    type: _mongoose.Schema.Types.ObjectId
+  }]
 }, {
   timestamps: true,
   versionKey: false
