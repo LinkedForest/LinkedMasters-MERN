@@ -1,3 +1,4 @@
+// Models
 import Conferences from '../../Models/Conferences/ConferencesModels';
 
 // Get All Conferences
@@ -7,6 +8,16 @@ export const GetAllConferences = async (Request, Response) => {
     Response.status(200).json({
         data: AllConferences,
         message: "These Are All Conferences"
+    });
+}
+
+// Get Conference By ID
+export const GetConferenceByID = async (Request, Response) => {
+    const ConferenceByID = await Conferences.findById(Request.params.ConferenceID);
+
+    Response.status(200).json({
+        data: ConferenceByID,
+        message: "Conference Is Found"
     });
 }
 
@@ -22,19 +33,9 @@ export const CreateNewConference = async (Request, Response) => {
     });
 }
 
-// Get Conference By ID
-export const GetConferenceById = async (Request, Response) => {
-    const ConferenceById = await Conferences.findById(Request.params.ConferenceId);
-
-    Response.status(200).json({
-        data: ConferenceById,
-        message: "Conference Is Found"
-    });
-}
-
 // Update Conference By ID
-export const UpdateConferenceById = async (Request, Response) => {
-    const ConferenceUpdate = await Conferences.findByIdAndUpdate(Request.params.ConferenceId, Request.body, {
+export const UpdateConferenceByID = async (Request, Response) => {
+    const ConferenceUpdate = await Conferences.findByIdAndUpdate(Request.params.ConferenceID, Request.body, {
         new: true
     });
 
@@ -46,7 +47,7 @@ export const UpdateConferenceById = async (Request, Response) => {
 
 // Soft Delete For Ever Conference By ID
 export const SoftDeleteConferenceById = async (Request, Response) => {
-    const ConferenceSoftDelete = await Conferences.deleteById(Request.params.ConferenceId);
+    const ConferenceSoftDelete = await Conferences.deleteById(Request.params.ConferenceID);
 
     Response.status(204).json({
         data: ConferenceSoftDelete,
@@ -55,8 +56,8 @@ export const SoftDeleteConferenceById = async (Request, Response) => {
 }
 
 // Force Delete For Ever Conference By ID
-export const ForceDeleteConferenceById = async (Request, Response) => {
-    const ConferenceForceDelete = await Conferences.findByIdAndDelete(Request.params.ConferenceId);
+export const ForceDeleteConferenceByID = async (Request, Response) => {
+    const ConferenceForceDelete = await Conferences.findByIdAndDelete(Request.params.ConferenceID);
 
     Response.status(204).json({
         data: ConferenceForceDelete,

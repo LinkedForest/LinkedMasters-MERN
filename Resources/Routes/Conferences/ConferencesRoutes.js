@@ -5,25 +5,25 @@ const Route = Router();
 import * as Conferences from '../../Controllers/Conferences/ConferencesControllers';
 
 // Middlewares
-import { VerifyToken } from '../../Middlewares/JWT/JWTMiddlewares';
-import { EndUserAdminToken, EndUserModeratorToken } from '../../Middlewares/EndUsers/EndUsersVerified';
+import { VerifyDashToken } from '../../Middlewares/JWT/JWTMiddlewares';
+import { DashRolesAdmin } from '../../Middlewares/DashRoles/DashRolesMiddlewares';
 
 // Get All Conferences
 Route.get('/', Conferences.GetAllConferences);
 
-// Create New Conference
-Route.post('/', [VerifyToken, EndUserModeratorToken], Conferences.CreateNewConference);
-
 // Get Conference By ID
-Route.get('/:ConferenceId', VerifyToken, Conferences.GetConferenceById);
+Route.get('/:ConferenceID', VerifyDashToken, Conferences.GetConferenceByID);
+
+// Create New Conference
+Route.post('/', [VerifyDashToken, DashRolesAdmin], Conferences.CreateNewConference);
 
 // Update Conference By ID
-Route.put('/:ConferenceId', [VerifyToken, EndUserAdminToken], Conferences.UpdateConferenceById);
+Route.put('/:ConferenceID', [VerifyDashToken, DashRolesAdmin], Conferences.UpdateConferenceByID);
 
 // Soft Delete Conference By ID
-Route.delete('/:ConferenceId', [VerifyToken, EndUserAdminToken], Conferences.SoftDeleteConferenceById);
+Route.delete('/:ConferenceID', [VerifyDashToken, DashRolesAdmin], Conferences.SoftDeleteConferenceByID);
 
 // Force Delete Conference By ID
-Route.delete('/:ConferenceId/force-delete', [VerifyToken, EndUserAdminToken], Conferences.ForceDeleteConferenceById);
+Route.delete('/:ConferenceID/force-delete', [VerifyDashToken, DashRolesAdmin], Conferences.ForceDeleteConferenceByID);
 
 export default Route;

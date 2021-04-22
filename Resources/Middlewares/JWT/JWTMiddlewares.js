@@ -1,11 +1,16 @@
+// JWT
 import JWT from 'jsonwebtoken';
 import JWTConfigurations from '../../Functions/JWT/JWTConfigurations';
-import EndUsers from '../../Models/DashUsers/DashUsersModels';
 
-// Verify Token
-export const VerifyToken = async (Request, Response, NextFunction) => {
+// Models
+import DashUsers from '../../Models/DashUsers/DashUsersModels';
+
+// Verify Dashboard User Token
+export const VerifyDashToken = async (Request, Response, NextFunction) => {
     try {
         const Token = Request.headers["authorization"] && Request.headers["authorization"].split("Bearer ")[1];
+
+        // Check If Token Not Exist
         if(!Token) {
             return Response.status(403).json({
                 message: 'This Route Need Token Provider'
@@ -13,18 +18,18 @@ export const VerifyToken = async (Request, Response, NextFunction) => {
         }
         const JWTData = JWT.verify(Token, JWTConfigurations.SECRET);
         Request.UserID = JWTData.id;
-        const EndUserData = await EndUsers.findById(Request.UserID, {
+        const DashUserData = await DashUsers.findById(Request.UserID, {
             password: 0
         })
-        if(!EndUserData) {
+        if(!DashUserData) {
             return Response.status(404).json({
-                message: 'EndUser Not Found'
+                message: 'Dashboard User Not Found'
             })
         }
         NextFunction();
     } catch (Error) {
         return Response.status(401).json({
-            message: 'This EndUser Not Unauthorized'
+            message: 'This Dashboard User Not Unauthorized To Use This Route'
         });
     }
 }

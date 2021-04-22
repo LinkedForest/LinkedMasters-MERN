@@ -24,7 +24,7 @@ const DashUsersSchema = new Schema({
         type: String,
         required: false
     },
-    Roles: [{
+    roles: [{
         ref: "DashRoles",
         type: Schema.Types.ObjectId
     }]

@@ -1,14 +1,14 @@
 import DashUsers from "../../Models/DashUsers/DashUsersModels";
-import { EndUsersPermissions } from '../../Models/Permissions/EndUsers/EndUsersPermissions';
+import { DashRoles } from '../../Models/DashRoles/DashRolesModels';
 
 // Check Dashboard Roles
 export const CheckDashRoles = async (Request, Response, NextFunction) => {
-    const Permissions = Request.body.permissions
-    if (Permissions) {
-        for (let i = 0; i < Permissions.length; i++) {
-            if (!EndUsersPermissions.includes(Permissions[i])) {
+    const Roles = Request.body.roles
+    if (Roles) {
+        for (let i = 0; i < Roles.length; i++) {
+            if (!DashRoles.includes(Roles[i])) {
                 return Response.json({
-                    message: `Permission ${Permissions[i]} Does Not Exists`
+                    message: `${Roles[i]} Role Does Not Exists`
                 });
             }
         }
