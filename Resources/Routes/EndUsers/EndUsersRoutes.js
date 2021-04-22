@@ -2,7 +2,7 @@ import { Router } from 'express';
 const Route = Router();
 
 // Controllers
-import * as EndUsers from '../../Controllers/EndUsers/EndUsersControllers';
+import * as EndUsers from '../../Controllers/DashboardUsers/DashboardUsersControllers';
 
 // Middlewares
 import { VerifyToken } from '../../Middlewares/JWT/JWTMiddlewares';

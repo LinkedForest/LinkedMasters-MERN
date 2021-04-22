@@ -1,6 +1,6 @@
 import JWT from 'jsonwebtoken';
 import JWTConfigurations from '../../Functions/JWT/JWTConfigurations';
-import EndUsers from '../../Models/Authentication/EndUsers/EndUsersModels';
+import EndUsers from '../../Models/DashUsers/DashUsersModels';
 
 // Verify Token
 export const VerifyToken = async (Request, Response, NextFunction) => {

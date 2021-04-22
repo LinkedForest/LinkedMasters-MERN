@@ -1,4 +1,4 @@
-import EndUsers from "../../Models/Authentication/EndUsers/EndUsersModels";
+import EndUsers from "../../Models/DashUsers/DashUsersModels";
 import EndUsersPermissions from "../../Models/Permissions/EndUsers/EndUsersPermissions";
 
 // Admin Token

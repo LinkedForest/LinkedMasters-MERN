@@ -2,8 +2,8 @@ import Bcrypt from 'bcryptjs';
 import {Schema, model} from 'mongoose';
 import SoftDelete from 'mongoose-delete';
 
-const EndUsersSchema = new Schema({
-    full_name: {
+const DashUsersSchema = new Schema({
+    name: {
         type: String,
         required: true
     },
@@ -24,16 +24,8 @@ const EndUsersSchema = new Schema({
         type: String,
         required: false
     },
-    country: {
-        type: String,
-        required: false
-    },
-    birthdate: {
-        type: Date,
-        required: false
-    },
-    permissions: [{
-        ref: "EndUsersPermissions",
+    Roles: [{
+        ref: "DashRoles",
         type: Schema.Types.ObjectId
     }]
 }, {
@@ -42,20 +34,21 @@ const EndUsersSchema = new Schema({
 });
 
 // Encrypt Password
-EndUsersSchema.statics.EncryptPassword = async (Password) => {
+DashUsersSchema.statics.EncryptPassword = async (Password) => {
     const GenSalt = await Bcrypt.genSalt(10);
     return await Bcrypt.hash(Password, GenSalt);
 }
 
 // Compare Password
-EndUsersSchema.statics.ComparePassword = async (Password, ReceivedPassword) => {
+DashUsersSchema.statics.ComparePassword = async (Password, ReceivedPassword) => {
     return await Bcrypt.compare(Password, ReceivedPassword);
 }
 
-EndUsersSchema.plugin(SoftDelete, {
+// Soft Delete
+DashUsersSchema.plugin(SoftDelete, {
     deletedAt: true,
     deletedBy: true,
     overrideMethods: true
 });
 
-export default model('EndUsers', EndUsersSchema);
+export default model('DashUsers', DashUsersSchema);
