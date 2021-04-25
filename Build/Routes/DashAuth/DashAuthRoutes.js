@@ -9,11 +9,9 @@ exports["default"] = void 0;
 
 var _express = require("express");
 
-var Conferences = _interopRequireWildcard(require("../../Controllers/Conferences/ConferencesControllers"));
+var DashAuth = _interopRequireWildcard(require("../../Controllers/DashAuth/DashAuthControllers"));
 
-var _JWTMiddlewares = require("../../Middlewares/JWT/JWTMiddlewares");
-
-var _DashRolesMiddlewares = require("../../Middlewares/DashRoles/DashRolesMiddlewares");
+var _DashUsersMiddlewares = require("../../Middlewares/DashUsers/DashUsersMiddlewares");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -21,17 +19,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var Route = (0, _express.Router)(); // Controllers
 
-// Get All Conferences
-Route.get('/', Conferences.GetAllConferences); // Get Conference By ID
+// Login
+Route.post('/login', DashAuth.Login); // Register
 
-Route.get('/:ConferenceID', _JWTMiddlewares.VerifyDashToken, Conferences.GetConferenceByID); // Create New Conference
-
-Route.post('/', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], Conferences.CreateNewConference); // Update Conference By ID
-
-Route.put('/:ConferenceID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], Conferences.UpdateConferenceByID); // Soft Delete Conference By ID
-
-Route["delete"]('/:ConferenceID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], Conferences.SoftDeleteConferenceByID); // Force Delete Conference By ID
-
-Route["delete"]('/:ConferenceID/force-delete', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], Conferences.ForceDeleteConferenceByID);
+Route.post('/register', [_DashUsersMiddlewares.CheckDashRoles, _DashUsersMiddlewares.CheckDashUsersEmail], DashAuth.Register);
 var _default = Route;
 exports["default"] = _default;

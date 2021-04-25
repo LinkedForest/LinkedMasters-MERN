@@ -9,11 +9,13 @@ exports["default"] = void 0;
 
 var _express = require("express");
 
-var Conferences = _interopRequireWildcard(require("../../Controllers/Conferences/ConferencesControllers"));
+var DashUsers = _interopRequireWildcard(require("../../Controllers/DashUsers/DashUsersControllers"));
 
 var _JWTMiddlewares = require("../../Middlewares/JWT/JWTMiddlewares");
 
 var _DashRolesMiddlewares = require("../../Middlewares/DashRoles/DashRolesMiddlewares");
+
+var _DashUsersMiddlewares = require("../../Middlewares/DashUsers/DashUsersMiddlewares");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -21,17 +23,17 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var Route = (0, _express.Router)(); // Controllers
 
-// Get All Conferences
-Route.get('/', Conferences.GetAllConferences); // Get Conference By ID
+// Get All Dashboard Users
+Route.get('/', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], DashUsers.GetAllDashUsers); // Get Dashboard Users By ID
 
-Route.get('/:ConferenceID', _JWTMiddlewares.VerifyDashToken, Conferences.GetConferenceByID); // Create New Conference
+Route.get('/:DashUserID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], DashUsers.GetDashUserByID); // Create New Dashboard User
 
-Route.post('/', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], Conferences.CreateNewConference); // Update Conference By ID
+Route.post('/', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin, _DashUsersMiddlewares.CheckDashRoles, _DashUsersMiddlewares.CheckDashUsersEmail], DashUsers.CreateNewDashUser); // Update Dashboard User By ID
 
-Route.put('/:ConferenceID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], Conferences.UpdateConferenceByID); // Soft Delete Conference By ID
+Route.put('/:DashUserID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], DashUsers.UpdateDashUserByID); // Soft Delete Dashboard User By ID
 
-Route["delete"]('/:ConferenceID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], Conferences.SoftDeleteConferenceByID); // Force Delete Conference By ID
+Route["delete"]('/:DashUserID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], DashUsers.SoftDeleteDashUserByID); // Force Delete Conference By ID
 
-Route["delete"]('/:ConferenceID/force-delete', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], Conferences.ForceDeleteConferenceByID);
+Route["delete"]('/:ConferenceID/force-delete', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], DashUsers.ForceDeleteDashUserByID);
 var _default = Route;
 exports["default"] = _default;

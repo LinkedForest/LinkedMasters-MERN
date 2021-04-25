@@ -2,12 +2,11 @@
 
 var _Application = _interopRequireDefault(require("./Application"));
 
-var _address = _interopRequireDefault(require("address"));
-
 require("./Database/MongoDBConnection");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// import Address from 'address';
 // Database
 // Connection Port
 var Port = process.env.API_PORT || 8000; // IP Address

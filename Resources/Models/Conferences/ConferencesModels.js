@@ -2,8 +2,9 @@ import {Schema, model} from 'mongoose';
 import SoftDelete from 'mongoose-delete';
 
 const ConferencesSchema = new Schema({
-    title: {
+    name: {
         type: String,
+        unique: true,
         required: true,
         default: "New Conference"
     },
@@ -12,7 +13,7 @@ const ConferencesSchema = new Schema({
         required: true,
         default: "It's New Conference"
     },
-    logo_image: {
+    logo: {
         type: String,
         required: true
     },
@@ -21,16 +22,12 @@ const ConferencesSchema = new Schema({
         required: true,
         default: new Date().toISOString()
     },
-    start_time: {
+    color: {
         type: String,
         required: true
     },
-    theme_color: {
-        type: String,
-        required: true
-    },
-    auth_pages: [{
-        ref: "ConferencesAuthPages",
+    conference_pages: [{
+        ref: "ConferencePages",
         type: Schema.Types.ObjectId
     }]
 }, {

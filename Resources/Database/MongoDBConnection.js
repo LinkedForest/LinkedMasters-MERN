@@ -7,7 +7,7 @@ const LocalDatabase = `mongodb://localhost:27017/${process.env.LOCAL_DATABASE_NA
 Mongoose.connect(LocalDatabase, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: true,
+    useFindAndModify: false,
     useCreateIndex: true,
     dbName: 'LinkedMasters'
 }).then().catch((Error) => {

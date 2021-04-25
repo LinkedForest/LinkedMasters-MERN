@@ -12,14 +12,18 @@ var ConferencesAuthPagesSchema = new _mongoose.Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: true
+  },
   background: {
     type: String,
     required: true
   },
-  images: {
-    type: String,
-    required: true
-  },
+  components: [{
+    ref: "ConferencesComponents",
+    type: _mongoose.Schema.Types.ObjectId
+  }],
   forms: [{
     ref: "ConferencesForms",
     type: _mongoose.Schema.Types.ObjectId

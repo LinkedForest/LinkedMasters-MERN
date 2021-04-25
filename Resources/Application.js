@@ -4,9 +4,9 @@ import Morgan from 'morgan';
 // Import Routes
 import DashAuthRoutes from "./Routes/DashAuth/DashAuthRoutes";
 import DashUsersRouters from "./Routes/DashUsers/DashUsersRoutes";
-// import ConferencesRouters from "./Routes/Conferences/ConferencesRoutes";
-// import ConferencesAuthPagesRouters from "./Routes/Conferences/ConferencesAuthRoutes/ConferencesAuthRoutes";
-// import EndUsersRouters from "./Routes/EndUsers/EndUsersRoutes";
+import ConferencesRouters from "./Routes/Conferences/ConferencesRoutes";
+import ConferencePagesRouters from "./Routes/ConferencePages/ConferencePagesRoutes";
+// import PageComponentsRouters from "./Routes/PageComponents/PageComponentsRoutes";
 
 //  Main Application
 const Application = Express();
@@ -41,9 +41,12 @@ Application.use(`${API_URL}/dash-auth`, DashAuthRoutes);
 Application.use(`${API_URL}/dashboard/dash-users`, DashUsersRouters);
 
 // Conferences Routes
-// Application.use(`${API_URL}/conferences`, ConferencesRouters);
+Application.use(`${API_URL}/conferences`, ConferencesRouters);
 
-// Conferences Auth. Pages Routes
-// Application.use(`${API_URL}/conferences/:ConferenceId`, ConferencesAuthPagesRouters);
+// Conference Pages Routes
+Application.use(`${API_URL}/conference-pages`, ConferencePagesRouters);
+
+// Page Components Routes
+// Application.use(`${API_URL}/page-components`, PageComponentsRouters);
 
 export default Application;
