@@ -1,15 +1,19 @@
 import {useContext, useState} from 'react';
 
-// Store Provider
-import { AuthStore } from "../../../Sources/Stores/AuthStoreProvider/AuthStoreProvider";
+// React Route
+import {useHistory} from "react-router-dom";
+
+// Stores
+import { AuthenticationStore } from "../../../Sources/Stores/Authentication/AuthenticationStore";
 
 // Actions
 import LoginDashboardAction from "../../../Sources/Actions/Dashboard/AuthDashboardActions/LoginDashboardAction";
 
 const LoginDashboardFunctions = () => {
+    const History = useHistory();
     const [loginDashboard, setLoginDashboard] = useState({});
 
-    const {AuthDashboardState: {DashboardAuth: {Loading, Error, Data}}, AuthDashboardDispatch} = useContext(AuthStore);
+    const {AuthDashboardState: {DashboardAuth: {Loading, Error, Data}}, AuthDashboardDispatch} = useContext(AuthenticationStore);
 
     // Get Form Data
     const FormData = (event) => {
@@ -24,7 +28,7 @@ const LoginDashboardFunctions = () => {
 
     // Form Submit
     const FormSubmit = () => {
-        LoginDashboardAction(loginDashboard)(AuthDashboardDispatch);
+        LoginDashboardAction(History)(loginDashboard)(AuthDashboardDispatch);
     }
 
     return {loginDashboard, FormData, FormValid, FormSubmit, Loading, Error, Data};

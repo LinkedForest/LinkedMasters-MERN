@@ -4,7 +4,7 @@ import React from 'react';
 import {CssBaseline} from "@material-ui/core";
 
 // Stores Provider
-import AuthStoreProvider from "./Sources/Stores/AuthStoreProvider/AuthStoreProvider";
+import MasterProvider from "./Sources/Stores/MasterProvider";
 
 // Routs Provider
 import RoutesProvider from "./Routes/RoutesProvider";
@@ -12,11 +12,11 @@ import RoutesProvider from "./Routes/RoutesProvider";
 function Application() {
     return (
         <React.Fragment>
-            <AuthStoreProvider>
+            <MasterProvider>
                 <RoutesProvider>
                     <CssBaseline />
                 </RoutesProvider>
-            </AuthStoreProvider>
+            </MasterProvider>
         </React.Fragment>
     );
 }

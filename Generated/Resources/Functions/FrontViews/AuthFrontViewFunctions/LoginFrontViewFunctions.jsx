@@ -1,7 +1,7 @@
 import {useContext, useState} from 'react';
 
 // Store Provider
-import { AuthStore } from "../../../Sources/Stores/AuthStoreProvider/AuthStoreProvider";
+import { AuthenticationStore } from "../../../Sources/Stores/Authentication/AuthenticationStore";
 
 // Actions
 import LoginFrontViewAction from "../../../Sources/Actions/FrontViews/AuthFrontViewActions/LoginFrontViewAction";
@@ -9,7 +9,7 @@ import LoginFrontViewAction from "../../../Sources/Actions/FrontViews/AuthFrontV
 const LoginFrontViewFunctions = () => {
     const [loginFrontView, setLoginFrontView] = useState({});
 
-    const {AuthFrontViewState: {FrontViewAuth: {Loading, Error, Data}}, AuthFrontViewDispatch} = useContext(AuthStore);
+    const {AuthFrontViewState: {FrontViewAuth: {Loading, Error, Data}}, AuthFrontViewDispatch} = useContext(AuthenticationStore);
 
     // Get Form Data
     const FormData = (event) => {

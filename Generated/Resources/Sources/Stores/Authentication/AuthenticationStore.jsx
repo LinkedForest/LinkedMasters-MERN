@@ -8,20 +8,20 @@ import AuthFrontViewReducers from '../../Reducers/FrontViews/AuthFrontViewReduce
 import AuthDashboardInit from "../../Init/DashboardInit/AuthDashboardInit";
 import AuthFrontViewInit from "../../Init/FrontViewsInit/AuthFrontViewInit";
 
-export const AuthStore = createContext({});
+export const AuthenticationStore = createContext({});
 
-const AuthStoreProvider = ({children}) => {
+const AuthenticationProvider = ({children}) => {
     const [AuthDashboardState, AuthDashboardDispatch] = useReducer(AuthDashboardReducers, AuthDashboardInit);
     const [AuthFrontViewState, AuthFrontViewDispatch] = useReducer(AuthFrontViewReducers, AuthFrontViewInit);
 
     return (
-        <AuthStore.Provider value={{
+        <AuthenticationStore.Provider value={{
             AuthDashboardState, AuthDashboardDispatch,
             AuthFrontViewState, AuthFrontViewDispatch
         }}>
             {children}
-        </AuthStore.Provider>
+        </AuthenticationStore.Provider>
     )
 }
 
-export default AuthStoreProvider;
+export default AuthenticationProvider;

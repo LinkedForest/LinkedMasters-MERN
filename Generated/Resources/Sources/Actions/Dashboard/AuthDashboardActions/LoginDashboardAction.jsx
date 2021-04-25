@@ -4,7 +4,7 @@ import AxiosInstance from "../../../../Database/AxiosInstance";
 // Actions Types
 import {LOGIN_ERRORS, LOGIN_LOADING, LOGIN_SUCCESS} from "../DashboardActionsTypes/AuthDashboardActionsTypes/LoginDashboardActionsTypes";
 
-const LoginDashboardAction = ({email, password}) => (AuthDashboardDispatch) => {
+const LoginDashboardAction = (History) => ({email, password}) => (AuthDashboardDispatch) => {
 
     AuthDashboardDispatch({
         type: LOGIN_LOADING
@@ -14,10 +14,11 @@ const LoginDashboardAction = ({email, password}) => (AuthDashboardDispatch) => {
         .post(`/dash-auth/login`, {email, password})
         .then(Response => {
             localStorage.AuthDashboard = Response.data.token;
+            History.push("/dashboard");
             AuthDashboardDispatch({
                 type: LOGIN_SUCCESS,
                 payload: Response.data
-            })
+            });
         })
         .catch(Error => (
             AuthDashboardDispatch({

@@ -25,18 +25,9 @@ export const Login = async (Request, Response) => {
         expiresIn: 86400
     });
 
-    // Response Data
-    const ResponseData = {
-        name   : FindDashUserByEmail.name,
-        email  : FindDashUserByEmail.email,
-        mobile : FindDashUserByEmail.mobile,
-        image  : FindDashUserByEmail.image,
-        roles  : FindDashUserByEmail.roles,
-    }
-
     // Response
     Response.status(200).json({
-        data: ResponseData,
+        data: FindDashUserByEmail,
         token: TokenJWT,
         message: "Dashboard User Is Found"
     });
@@ -75,18 +66,9 @@ export const Register = async (Request, Response) => {
         expiresIn: 86400
     });
 
-    // Response Data
-    const ResponseData = {
-        full_name : NewDashUser.name,
-        email     : NewDashUser.email,
-        mobile    : NewDashUser.mobile,
-        image     : NewDashUser.image,
-        roles     : NewDashUser.roles,
-    }
-
     // Response
     Response.status(200).json({
-        data: ResponseData,
+        data: NewDashUser,
         token: TokenJWT,
         message: "New Dashboard User Has Been Created"
     });
