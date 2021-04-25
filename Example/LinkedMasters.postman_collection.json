@@ -6,89 +6,282 @@
 	},
 	"item": [
 		{
-			"name": "Conferences",
+			"name": "Dashboard",
 			"item": [
 				{
-					"name": "Create Conference",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwM2I2OGM3ZmY0MDRkMmMwNGIxNjRjNCIsImlhdCI6MTYxNDUwNjE4NCwiZXhwIjoxNjE0NTkyNTg0fQ.hnWwfahmFGA5RMrYnCR6I8lj3JXMK-TqCNCozKtGh0Y",
-									"type": "string"
+					"name": "Dashboard Auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"123456789\"\r\n}"
+								},
+								"url": {
+									"raw": "{{API-URL}}{{DASH-AUTH}}/login",
+									"host": [
+										"{{API-URL}}{{DASH-AUTH}}"
+									],
+									"path": [
+										"login"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Conference OF USA\",\r\n    \"description\": \"New Event In USA\",\r\n    \"category\": \"Medical\",\r\n    \"image\": \"https://unsmil.unmissions.org/sites/default/files/styles/full_width_image/public/field/image/berlin_conference.jpg\",\r\n    \"start_date\": \"2021-03-26T14:30:53.945Z\",\r\n    \"end_date\": \"2021-03-29T14:30:53.945Z\"\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:5000/api/conferences",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"conferences"
-							]
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ramy Moustafa\",\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"123456789\",\r\n    \"mobile\": \"0123456789\",\r\n    \"image\": \"https://thumbs.dreamstime.com/b/portrait-young-man-beard-hair-style-male-avatar-vector-portrait-young-man-beard-hair-style-male-avatar-105082137.jpg\",\r\n    \"roles\": [\"Admin\"]\r\n}"
+								},
+								"url": {
+									"raw": "{{API-URL}}{{DASH-AUTH}}/register",
+									"host": [
+										"{{API-URL}}{{DASH-AUTH}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Update Conference By ID",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwM2E0NDZmODdkMjZhMjkwYzVlYzc0NSIsImlhdCI6MTYxNDQzNjQyNiwiZXhwIjoxNjE0NTIyODI2fQ.x82GX7yRINXxK0qnvBKfhKeIypCJRGdN_jMvZRe3r8U",
-									"type": "string"
+					"name": "Dashboard Users",
+					"item": [
+						{
+							"name": "Get All Users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN-TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{API-URL}}{{DASH-USERS}}",
+									"host": [
+										"{{API-URL}}{{DASH-USERS}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Conference OF Egypt\"\r\n}"
+						{
+							"name": "Get User By ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN-TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{API-URL}}{{DASH-USERS}}/6081ff3b936d570a545afdbd",
+									"host": [
+										"{{API-URL}}{{DASH-USERS}}"
+									],
+									"path": [
+										"6081ff3b936d570a545afdbd"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:5000/api/conferences/603a717d8450e019245c046a",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"conferences",
-								"603a717d8450e019245c046a"
-							]
+						{
+							"name": "Create User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN-TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Moustafa Ahmed\",\r\n    \"email\": \"editor@editor.com\",\r\n    \"password\": \"123456789\",\r\n    \"mobile\": \"0123456789\",\r\n    \"image\": \"https://thumbs.dreamstime.com/b/portrait-young-man-beard-hair-style-male-avatar-vector-portrait-young-man-beard-hair-style-male-avatar-105082137.jpg\",\r\n    \"roles\": [\"Editor\"]\r\n}"
+								},
+								"url": {
+									"raw": "{{API-URL}}{{DASH-USERS}}",
+									"host": [
+										"{{API-URL}}{{DASH-USERS}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN-TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Samir Moustafa\"\r\n}"
+								},
+								"url": {
+									"raw": "{{API-URL}}{{DASH-USERS}}/608200f6936d570a545afdc0",
+									"host": [
+										"{{API-URL}}{{DASH-USERS}}"
+									],
+									"path": [
+										"608200f6936d570a545afdc0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN-TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{API-URL}}{{DASH-USERS}}/608200f6936d570a545afdc0",
+									"host": [
+										"{{API-URL}}{{DASH-USERS}}"
+									],
+									"path": [
+										"608200f6936d570a545afdc0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Soft Delete User By ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN-TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{API-URL}}{{DASH-USERS}}/soft/608200f6936d570a545afdc0",
+									"host": [
+										"{{API-URL}}{{DASH-USERS}}"
+									],
+									"path": [
+										"soft",
+										"608200f6936d570a545afdc0"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
-				},
+					]
+				}
+			]
+		},
+		{
+			"name": "Conferences",
+			"item": [
 				{
 					"name": "Get All Conferences",
 					"protocolProfileBehavior": {
@@ -100,7 +293,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjFiMzQ0NDMxZjE0MGYzODNhOTkxYyIsImlhdCI6MTYxNzAyNDA5NiwiZXhwIjoxNjE3MTEwNDk2fQ.HOKCLX8HIYb2O6QRf7ziXXiv9PIg_MZv9tJxX2VD3Vw",
+									"value": "{{ADMIN-TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -112,14 +305,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/conferences",
-							"protocol": "http",
+							"raw": "{{API-URL}}/conferences",
 							"host": [
-								"localhost"
+								"{{API-URL}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
 								"conferences"
 							]
 						}
@@ -137,7 +327,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwM2E0NDZmODdkMjZhMjkwYzVlYzc0NSIsImlhdCI6MTYxNDQzNjQyNiwiZXhwIjoxNjE0NTIyODI2fQ.x82GX7yRINXxK0qnvBKfhKeIypCJRGdN_jMvZRe3r8U",
+									"value": "{{ADMIN-TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -149,16 +339,88 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/conferences/603a717d8450e019245c046a",
-							"protocol": "http",
+							"raw": "{{API-URL}}/conferences/608428b60821362c643e62ff",
 							"host": [
-								"localhost"
+								"{{API-URL}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
 								"conferences",
-								"603a717d8450e019245c046a"
+								"608428b60821362c643e62ff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Conference",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Conference OF UAE\",\r\n    \"description\": \"New Event In UAE\",\r\n    \"logo\": \"https://unsmil.unmissions.org/sites/default/files/styles/full_width_image/public/field/image/berlin_conference.jpg\",\r\n    \"start_date\": \"2021-10-22T22:56:59.091Z\",\r\n    \"color\": \"#ffffff\",\r\n    \"conference_pages\": []\r\n}"
+						},
+						"url": {
+							"raw": "{{API-URL}}/conferences",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Conference By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Conference OF Egypt\"\r\n}"
+						},
+						"url": {
+							"raw": "{{API-URL}}/conferences/6082e096223ea4058ccd0826",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conferences",
+								"6082e096223ea4058ccd0826"
 							]
 						}
 					},
@@ -172,7 +434,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwM2E0NDZmODdkMjZhMjkwYzVlYzc0NSIsImlhdCI6MTYxNDQzNjQyNiwiZXhwIjoxNjE0NTIyODI2fQ.x82GX7yRINXxK0qnvBKfhKeIypCJRGdN_jMvZRe3r8U",
+									"value": "{{ADMIN-TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -184,61 +446,114 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/conferences/603a717d8450e019245c046a",
-							"protocol": "http",
+							"raw": "{{API-URL}}/conferences/6082b51a37e2512bc4f7026e",
 							"host": [
-								"localhost"
+								"{{API-URL}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
 								"conferences",
-								"603a717d8450e019245c046a"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Authentication",
-			"item": [
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"123456789\"\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:5000/api/auth/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"auth",
-								"login"
+								"6082b51a37e2512bc4f7026e"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Register",
+					"name": "Soft Delete Conference By ID",
 					"request": {
-						"method": "POST",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{API-URL}}/conferences/soft/6082b50337e2512bc4f7026c",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conferences",
+								"soft",
+								"6082b50337e2512bc4f7026c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conference Pages",
+			"item": [
+				{
+					"name": "Get All Conference Pages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Conference Pages By Conference ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -248,38 +563,65 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"Ramy Moustafa\",\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"123456789\",\r\n    \"mobile\": \"0123456789\",\r\n    \"image\": \"https://thumbs.dreamstime.com/b/portrait-young-man-beard-hair-style-male-avatar-vector-portrait-young-man-beard-hair-style-male-avatar-105082137.jpg\",\r\n    \"country\": \"Egypt\",\r\n    \"birthdate\": \"2021-03-26T12:25:38.650Z\",\r\n    \"permissions\": [\"Admin\"]\r\n}"
+							"raw": "{\r\n    \"conference_id\": \"608428b60821362c643e62ff\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/auth/register",
-							"protocol": "http",
+							"raw": "{{API-URL}}/conference-pages/conference",
 							"host": [
-								"localhost"
+								"{{API-URL}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
-								"auth",
-								"register"
+								"conference-pages",
+								"conference"
 							]
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "End-User",
-			"item": [
+				},
 				{
-					"name": "Create End User",
+					"name": "Get Conference Page By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjFiMzQ0NDMxZjE0MGYzODNhOTkxYyIsImlhdCI6MTYxNzAyNDA5NiwiZXhwIjoxNjE3MTEwNDk2fQ.HOKCLX8HIYb2O6QRf7ziXXiv9PIg_MZv9tJxX2VD3Vw",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/60842aa20821362c643e6301",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								"60842aa20821362c643e6301"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Conference Page",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -294,24 +636,444 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"Ramy Moustafa\",\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"123456789\",\r\n    \"mobile\": \"0123456789\",\r\n    \"image\": \"https://thumbs.dreamstime.com/b/portrait-young-man-beard-hair-style-male-avatar-vector-portrait-young-man-beard-hair-style-male-avatar-105082137.jpg\",\r\n    \"country\": \"Egypt\",\r\n    \"birthdate\": \"2021-03-26T12:25:38.650Z\",\r\n    \"permissions\": [\"Admin\"]\r\n}"
+							"raw": "{\r\n    \"name\": \"Login\",\r\n    \"description\": \"Login Page\",\r\n    \"background\": \"https://unsmil.unmissions.org/sites/default/files/styles/full_width_image/public/field/image/berlin_conference.jpg\",\r\n    \"conference_id\": \"608497c4b34a4b107460d508\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/end-user",
-							"protocol": "http",
+							"raw": "{{API-URL}}/conference-pages/",
 							"host": [
-								"localhost"
+								"{{API-URL}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
-								"end-user"
+								"conference-pages",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Conference Page By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Login\"\r\n}"
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/6084163a2139a839f4819d21",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								"6084163a2139a839f4819d21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Conference Page By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"conference_id\": \"608428b60821362c643e62ff\"\r\n}"
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/60843353a87c452cec055b40",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								"60843353a87c452cec055b40"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Soft Delete Conference Page By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/soft/6082cf5aeb5ae3040487e8fb",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								"soft",
+								"6082cf5aeb5ae3040487e8fb"
 							]
 						}
 					},
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Page Components",
+			"item": [
+				{
+					"name": "Get All Page Components",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Page Components By Page ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"conference_id\": \"608428b60821362c643e62ff\"\r\n}"
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/conference",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								"conference"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Page Component By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/60842aa20821362c643e6301",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								"60842aa20821362c643e6301"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Page Component",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Login\",\r\n    \"description\": \"Login Page\",\r\n    \"background\": \"https://unsmil.unmissions.org/sites/default/files/styles/full_width_image/public/field/image/berlin_conference.jpg\",\r\n    \"conference_id\": \"608497c4b34a4b107460d508\"\r\n}"
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Page Component By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Login\"\r\n}"
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/6084163a2139a839f4819d21",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								"6084163a2139a839f4819d21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Page Component By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"conference_id\": \"608428b60821362c643e62ff\"\r\n}"
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/60843353a87c452cec055b40",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								"60843353a87c452cec055b40"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Soft Delete Page Component By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN-TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{API-URL}}/conference-pages/soft/6082cf5aeb5ae3040487e8fb",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"conference-pages",
+								"soft",
+								"6082cf5aeb5ae3040487e8fb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API-URL",
+			"value": "http://localhost:5050/api"
+		},
+		{
+			"key": "DASH-AUTH",
+			"value": "/dash-auth"
+		},
+		{
+			"key": "DASH-USERS",
+			"value": "/dashboard/dash-users"
+		},
+		{
+			"key": "ADMIN-TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODFmZjNiOTM2ZDU3MGE1NDVhZmRiZCIsImlhdCI6MTYxOTI2ODIzMSwiZXhwIjoxNjE5MzU0NjMxfQ.U54DQeT16F7HpEdzgNVYvplE9Evt1F6vIBRolKiS-HE"
 		}
 	]
 }
