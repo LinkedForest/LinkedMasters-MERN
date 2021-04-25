@@ -7,22 +7,22 @@ import {LOGIN_ERRORS, LOGIN_LOADING, LOGIN_SUCCESS} from "../DashboardActionsTyp
 const LoginDashboardAction = ({email, password}) => (AuthDashboardDispatch) => {
 
     AuthDashboardDispatch({
-        type: LOGIN_LOADING,
+        type: LOGIN_LOADING
     })
 
     AxiosInstance()
-        .post(`/auth/login`, {email, password})
+        .post(`/dash-auth/login`, {email, password})
         .then(Response => {
-            localStorage.Authenticated = Response.data;
+            localStorage.AuthDashboard = Response.data.token;
             AuthDashboardDispatch({
                 type: LOGIN_SUCCESS,
-                payload: Response.data,
+                payload: Response.data
             })
         })
         .catch(Error => (
             AuthDashboardDispatch({
                 type: LOGIN_ERRORS,
-                payload: Error.response ? Error.response.data : 'Could Not Connect With API',
+                payload: Error.response ? Error.response.data : 'Could Not Connect With API'
             })
         ));
 
