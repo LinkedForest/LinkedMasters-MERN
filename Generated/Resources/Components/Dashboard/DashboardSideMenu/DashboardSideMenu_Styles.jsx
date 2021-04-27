@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 // Side Menu Width
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const useStyles = makeStyles((theme) => ({
     drawer: {

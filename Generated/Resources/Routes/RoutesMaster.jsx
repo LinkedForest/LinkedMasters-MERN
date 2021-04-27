@@ -91,6 +91,13 @@ const RoutesMaster = [
                         title: 'LinkedMasters - Dashboard',
                         authRequired: false,
                         component: IntroDashboardContainer
+                    },
+                    {
+                        path: '/dashboard/conferences',
+                        exact: true,
+                        title: 'LinkedMasters - Conferences',
+                        authRequired: false,
+                        component: IntroDashboardContainer
                     }
                 ]
             },

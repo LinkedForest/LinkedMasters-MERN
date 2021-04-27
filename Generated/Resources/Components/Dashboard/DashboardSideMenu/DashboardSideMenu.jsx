@@ -1,6 +1,9 @@
 import React, {useContext} from 'react';
 import clsx from 'clsx';
 
+// React Router
+import { Link } from 'react-router-dom';
+
 // Stores
 import { AppearanceStore } from '../../../Sources/Stores/Appearance/AppearanceStore';
 
@@ -32,9 +35,13 @@ const DashboardSideMenu = () => {
                 </Box>
                 <Divider />
                 <List>
-                    <ListItem button>
+                    <ListItem button component={Link} to="/dashboard">
                         <ListItemIcon><MoveToInbox /></ListItemIcon>
-                        <ListItemText primary="text" />
+                        <ListItemText primary="Dashboard" />
+                    </ListItem>
+                    <ListItem button component={Link} to="/dashboard/conferences">
+                        <ListItemIcon><MoveToInbox /></ListItemIcon>
+                        <ListItemText primary="Conferences" />
                     </ListItem>
                 </List>
             </Drawer>

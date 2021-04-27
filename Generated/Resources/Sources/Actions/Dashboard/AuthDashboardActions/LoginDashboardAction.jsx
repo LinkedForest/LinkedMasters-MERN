@@ -14,11 +14,11 @@ const LoginDashboardAction = (History) => ({email, password}) => (AuthDashboardD
         .post(`/dash-auth/login`, {email, password})
         .then(Response => {
             localStorage.AuthDashboard = Response.data.token;
-            History.push("/dashboard");
             AuthDashboardDispatch({
                 type: LOGIN_SUCCESS,
                 payload: Response.data
             });
+            History.push("/dashboard");
         })
         .catch(Error => (
             AuthDashboardDispatch({
@@ -26,7 +26,6 @@ const LoginDashboardAction = (History) => ({email, password}) => (AuthDashboardD
                 payload: Error.response ? Error.response.data : 'Could Not Connect With API'
             })
         ));
-
 }
 
 export default LoginDashboardAction;

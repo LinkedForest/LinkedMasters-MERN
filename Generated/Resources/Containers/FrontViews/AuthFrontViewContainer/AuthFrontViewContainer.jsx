@@ -8,8 +8,8 @@ import FrontViewsHeader from "../../../Components/FrontViews/FrontViewsHeader/Fr
 import FrontViewsFooter from "../../../Components/FrontViews/FrontViewsFooter/FrontViewsFooter";
 
 // Layouts
-import LoginFrontViewLayout from "../../../Layouts/FrontViews/Authentication/LoginFrontViewLayout/LoginFrontViewLayout";
-import RegisterFrontViewLayout from "../../../Layouts/FrontViews/Authentication/RegisterFrontViewLayout/RegisterFrontViewLayout";
+import LoginFrontViewLayout from "../../../Layouts/FrontViews/Authentication/LoginFrontView/LoginFrontViewLayout";
+import RegisterFrontViewLayout from "../../../Layouts/FrontViews/Authentication/RegisterFrontView/RegisterFrontViewLayout";
 
 const AuthFrontViewContainer = () => {
     return (

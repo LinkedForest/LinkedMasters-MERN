@@ -8,8 +8,8 @@ const AuthDashboardReducers = (state, {payload, type}) => {
         case LOGIN_LOADING :
             return {
                 ...state,
-                Authentication: {
-                    ...state.Authentication,
+                DashboardAuth: {
+                    ...state.DashboardAuth,
                     Loading: true,
                     Error: false
                 }
@@ -18,8 +18,8 @@ const AuthDashboardReducers = (state, {payload, type}) => {
         case LOGIN_SUCCESS :
             return {
                 ...state,
-                Authentication: {
-                    ...state.Authentication,
+                DashboardAuth: {
+                    ...state.DashboardAuth,
                     Loading: false,
                     Data: payload,
                 }
@@ -28,8 +28,8 @@ const AuthDashboardReducers = (state, {payload, type}) => {
         case LOGIN_ERRORS :
             return {
                 ...state,
-                Authentication: {
-                    ...state.Authentication,
+                DashboardAuth: {
+                    ...state.DashboardAuth,
                     Loading: false,
                     Error: payload,
                 }

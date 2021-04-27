@@ -29,7 +29,7 @@ const DashboardHeader = () => {
                         <Menu />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Mini variant drawer
+                        Authentication Builder
                     </Typography>
                 </Toolbar>
             </AppBar>
