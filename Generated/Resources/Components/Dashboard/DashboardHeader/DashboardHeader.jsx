@@ -17,6 +17,7 @@ const DashboardHeader = () => {
     const classes = useStyles();
     const { DashSideMenu, setDashSideMenu } = useContext(AppearanceStore);
 
+    // Side Menu
     const handleDrawerOpen = () => {
         setDashSideMenu(true);
     };
@@ -28,8 +29,8 @@ const DashboardHeader = () => {
                     <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} edge="start" className={clsx(classes.menuButton, {[classes.hide]: DashSideMenu})}>
                         <Menu />
                     </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Authentication Builder
+                    <Typography variant="h6" className={clsx({[classes.hide]: DashSideMenu})} noWrap>
+                        iBuilder
                     </Typography>
                 </Toolbar>
             </AppBar>

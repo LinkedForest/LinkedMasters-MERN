@@ -98,6 +98,27 @@ const RoutesMaster = [
                         title: 'LinkedMasters - Conferences',
                         authRequired: false,
                         component: IntroDashboardContainer
+                    },
+                    {
+                        path: '/dashboard/new-page',
+                        exact: true,
+                        title: 'LinkedMasters - New Page',
+                        authRequired: false,
+                        component: IntroDashboardContainer
+                    },
+                    {
+                        path: '/dashboard/pages',
+                        exact: true,
+                        title: 'LinkedMasters - Pages',
+                        authRequired: false,
+                        component: IntroDashboardContainer
+                    },
+                    {
+                        path: '/dashboard/new-conference',
+                        exact: true,
+                        title: 'LinkedMasters - New Conferences',
+                        authRequired: false,
+                        component: IntroDashboardContainer
                     }
                 ]
             },
