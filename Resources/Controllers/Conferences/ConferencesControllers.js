@@ -1,3 +1,5 @@
+const Normalize = require('normalize-path');
+
 // Models
 import Conferences from '../../Models/Conferences/ConferencesModels';
 
@@ -26,8 +28,8 @@ export const GetConferenceByID = async (Request, Response) => {
 // Create New Conference
 export const CreateNewConference = async (Request, Response) => {
     // Request Data
-    const { name, description, logo, start_date, color, conference_pages } = Request.body;
-    const NewConference = new Conferences({ name, description, logo, start_date, color, conference_pages });
+    const { name, description, start_date, color, conference_pages } = Request.body;
+    const NewConference = new Conferences({ name, description, logo: Normalize(Request.file.path), start_date, color, conference_pages });
 
     // Find Name
     const FindConferenceByName = await Conferences.findOne({ name: Request.body.name });

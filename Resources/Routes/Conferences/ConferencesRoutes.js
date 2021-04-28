@@ -6,6 +6,7 @@ import * as Conferences from '../../Controllers/Conferences/ConferencesControlle
 
 // Middlewares
 import { VerifyDashToken } from '../../Middlewares/JWT/JWTMiddlewares';
+import { UploadFiles } from "../../Middlewares/UploadFiles/UploadFilesMiddlewares";
 import { DashRolesAdmin } from '../../Middlewares/DashRoles/DashRolesMiddlewares';
 import { CheckConferencePage } from '../../Middlewares/Conferences/ConferencesMiddlewares';
 
@@ -16,10 +17,10 @@ Route.get('/', Conferences.GetAllConferences);
 Route.get('/:ConferenceID', VerifyDashToken, Conferences.GetConferenceByID);
 
 // Create New Conference
-Route.post('/', [VerifyDashToken, DashRolesAdmin, CheckConferencePage], Conferences.CreateNewConference);
+Route.post('/', [VerifyDashToken, DashRolesAdmin, CheckConferencePage, UploadFiles.single('logo')], Conferences.CreateNewConference);
 
 // Update Conference By ID
-Route.put('/:ConferenceID', [VerifyDashToken, DashRolesAdmin, CheckConferencePage], Conferences.UpdateConferenceByID);
+Route.put('/:ConferenceID', [VerifyDashToken, DashRolesAdmin, CheckConferencePage, UploadFiles.single('logo')], Conferences.UpdateConferenceByID);
 
 // Force Delete Conference By ID
 Route.delete('/:ConferenceID', [VerifyDashToken, DashRolesAdmin], Conferences.ForceDeleteConferenceByID);

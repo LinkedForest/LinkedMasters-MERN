@@ -8,8 +8,11 @@ import ConferencesRouters from "./Routes/Conferences/ConferencesRoutes";
 import ConferencePagesRouters from "./Routes/ConferencePages/ConferencePagesRoutes";
 // import PageComponentsRouters from "./Routes/PageComponents/PageComponentsRoutes";
 
-//  Main Application
+//  Init Application
 const Application = Express();
+
+// Public Folder
+Application.use('/Public/Uploads', Express.static('Public/Uploads'));
 
 // Security Server
 Application.use((Request, Response, NextFunction) => {
