@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ForceDeleteDashUserByID = exports.SoftDeleteDashUserByID = exports.UpdateDashUserByID = exports.CreateNewDashUser = exports.GetDashUserByID = exports.GetAllDashUsers = void 0;
+exports.SoftDeleteDashUserByID = exports.ForceDeleteDashUserByID = exports.UpdateDashUserByID = exports.CreateNewDashUser = exports.GetDashUserByID = exports.GetAllDashUsers = void 0;
 
 var _DashUsersModels = _interopRequireDefault(require("../../Models/DashUsers/DashUsersModels"));
 
@@ -115,7 +115,7 @@ var CreateNewDashUser = /*#__PURE__*/function () {
             _context3.next = 13;
             return _DashUsersModels["default"].findOne({
               email: Request.body.email
-            }).populate("roles");
+            });
 
           case 13:
             FindDashUserByEmail = _context3.sent;
@@ -197,6 +197,8 @@ var UpdateDashUserByID = /*#__PURE__*/function () {
           case 0:
             _context4.next = 2;
             return _DashUsersModels["default"].findByIdAndUpdate(Request.params.DashUserID, Request.body, {
+              safe: true,
+              upsert: true,
               "new": true
             });
 
@@ -219,27 +221,27 @@ var UpdateDashUserByID = /*#__PURE__*/function () {
   return function UpdateDashUserByID(_x7, _x8) {
     return _ref4.apply(this, arguments);
   };
-}(); // Soft Delete For Dashboard User By ID
+}(); // Force Delete For Dashboard User By ID
 
 
 exports.UpdateDashUserByID = UpdateDashUserByID;
 
-var SoftDeleteDashUserByID = /*#__PURE__*/function () {
+var ForceDeleteDashUserByID = /*#__PURE__*/function () {
   var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(Request, Response) {
-    var DashUserSoftDelete;
+    var DashUserForceDelete;
     return regeneratorRuntime.wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return _DashUsersModels["default"].deleteById(Request.params.DashUserID);
+            return _DashUsersModels["default"].findByIdAndDelete(Request.params.DashUserID);
 
           case 2:
-            DashUserSoftDelete = _context5.sent;
+            DashUserForceDelete = _context5.sent;
             // Response
-            Response.status(204).json({
-              data: DashUserSoftDelete,
-              message: "Dashboard User Has Been Soft Deleted"
+            Response.status(200).json({
+              data: DashUserForceDelete,
+              message: "Dashboard User Has Been Force Deleted"
             });
 
           case 4:
@@ -250,30 +252,30 @@ var SoftDeleteDashUserByID = /*#__PURE__*/function () {
     }, _callee5);
   }));
 
-  return function SoftDeleteDashUserByID(_x9, _x10) {
+  return function ForceDeleteDashUserByID(_x9, _x10) {
     return _ref5.apply(this, arguments);
   };
-}(); // Force Delete For Dashboard User By ID
+}(); // Soft Delete For Dashboard User By ID
 
 
-exports.SoftDeleteDashUserByID = SoftDeleteDashUserByID;
+exports.ForceDeleteDashUserByID = ForceDeleteDashUserByID;
 
-var ForceDeleteDashUserByID = /*#__PURE__*/function () {
+var SoftDeleteDashUserByID = /*#__PURE__*/function () {
   var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(Request, Response) {
-    var DashUserForceDelete;
+    var DashUserSoftDelete;
     return regeneratorRuntime.wrap(function _callee6$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
             _context6.next = 2;
-            return _DashUsersModels["default"].findByIdAndDelete(Request.params.DashUserID);
+            return _DashUsersModels["default"].deleteById(Request.params.DashUserID);
 
           case 2:
-            DashUserForceDelete = _context6.sent;
+            DashUserSoftDelete = _context6.sent;
             // Response
-            Response.status(204).json({
-              data: DashUserForceDelete,
-              message: "Dashboard User Has Been Force Deleted"
+            Response.status(200).json({
+              data: DashUserSoftDelete,
+              message: "Dashboard User Has Been Soft Deleted"
             });
 
           case 4:
@@ -284,9 +286,9 @@ var ForceDeleteDashUserByID = /*#__PURE__*/function () {
     }, _callee6);
   }));
 
-  return function ForceDeleteDashUserByID(_x11, _x12) {
+  return function SoftDeleteDashUserByID(_x11, _x12) {
     return _ref6.apply(this, arguments);
   };
 }();
 
-exports.ForceDeleteDashUserByID = ForceDeleteDashUserByID;
+exports.SoftDeleteDashUserByID = SoftDeleteDashUserByID;

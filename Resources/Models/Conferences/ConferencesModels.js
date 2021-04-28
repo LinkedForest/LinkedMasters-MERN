@@ -25,7 +25,11 @@ const ConferencesSchema = new Schema({
     color: {
         type: String,
         required: true
-    }
+    },
+    conference_pages: [{
+        ref: "ConferencePages",
+        type: Schema.Types.ObjectId
+    }]
 }, {
     timestamps: true,
     versionKey: false

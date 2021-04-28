@@ -11,7 +11,7 @@ var LocalDatabase = "mongodb://localhost:27017/".concat(process.env.LOCAL_DATABA
 _mongoose["default"].connect(LocalDatabase, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: true,
+  useFindAndModify: false,
   useCreateIndex: true,
   dbName: 'LinkedMasters'
 }).then()["catch"](function (Error) {

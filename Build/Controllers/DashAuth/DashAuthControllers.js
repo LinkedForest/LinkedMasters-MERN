@@ -22,7 +22,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 // Login
 var Login = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(Request, Response) {
-    var FindDashUserByEmail, ComparePassword, TokenJWT, ResponseData;
+    var FindDashUserByEmail, ComparePassword, TokenJWT;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -70,22 +70,14 @@ var Login = /*#__PURE__*/function () {
 
           case 12:
             TokenJWT = _context.sent;
-            // Response Data
-            ResponseData = {
-              name: FindDashUserByEmail.name,
-              email: FindDashUserByEmail.email,
-              mobile: FindDashUserByEmail.mobile,
-              image: FindDashUserByEmail.image,
-              roles: FindDashUserByEmail.roles
-            }; // Response
-
+            // Response
             Response.status(200).json({
-              data: ResponseData,
+              data: FindDashUserByEmail,
               token: TokenJWT,
               message: "Dashboard User Is Found"
             });
 
-          case 15:
+          case 14:
           case "end":
             return _context.stop();
         }
@@ -103,7 +95,7 @@ exports.Login = Login;
 
 var Register = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(Request, Response) {
-    var _Request$body, name, email, password, mobile, image, roles, NewDashUser, FindDashUserByEmail, FindDashRoles, DefaultDashRole, SaveNewDashUser, TokenJWT, ResponseData;
+    var _Request$body, name, email, password, mobile, image, roles, NewDashUser, FindDashUserByEmail, FindDashRoles, DefaultDashRole, SaveNewDashUser, TokenJWT;
 
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
@@ -188,23 +180,15 @@ var Register = /*#__PURE__*/function () {
               id: SaveNewDashUser._id
             }, _JWTConfigurations["default"].SECRET, {
               expiresIn: 86400
-            }); // Response Data
-
-            ResponseData = {
-              full_name: NewDashUser.name,
-              email: NewDashUser.email,
-              mobile: NewDashUser.mobile,
-              image: NewDashUser.image,
-              roles: NewDashUser.roles
-            }; // Response
+            }); // Response
 
             Response.status(200).json({
-              data: ResponseData,
+              data: NewDashUser,
               token: TokenJWT,
               message: "New Dashboard User Has Been Created"
             });
 
-          case 33:
+          case 32:
           case "end":
             return _context2.stop();
         }

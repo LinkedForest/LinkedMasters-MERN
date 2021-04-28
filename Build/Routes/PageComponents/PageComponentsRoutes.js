@@ -9,13 +9,13 @@ exports["default"] = void 0;
 
 var _express = require("express");
 
-var DashUsers = _interopRequireWildcard(require("../../Controllers/DashUsers/DashUsersControllers"));
+var PageComponents = _interopRequireWildcard(require("../../Controllers/PageComponents/PageComponentsControllers"));
 
 var _JWTMiddlewares = require("../../Middlewares/JWT/JWTMiddlewares");
 
 var _DashRolesMiddlewares = require("../../Middlewares/DashRoles/DashRolesMiddlewares");
 
-var _DashUsersMiddlewares = require("../../Middlewares/DashUsers/DashUsersMiddlewares");
+var _PageComponentsMiddlewares = require("../../Middlewares/PageComponents/PageComponentsMiddlewares");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -23,17 +23,19 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var Route = (0, _express.Router)(); // Controllers
 
-// Get All Dashboard Users
-Route.get('/', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], DashUsers.GetAllDashUsers); // Get Dashboard Users By ID
+// Get All Page Components
+Route.get('/', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], PageComponents.GetAllPageComponents); // Get All Page Components By Conference Page ID
 
-Route.get('/:DashUserID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], DashUsers.GetDashUserByID); // Create New Dashboard User
+Route.get('/conference-page', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], PageComponents.GetAllPageComponentsByConferencePageID); // Get Page Component By ID
 
-Route.post('/', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin, _DashUsersMiddlewares.CheckDashRoles, _DashUsersMiddlewares.CheckDashUsersEmail], DashUsers.CreateNewDashUser); // Update Dashboard User By ID
+Route.get('/:PageComponentsID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], PageComponents.GetPageComponentByID); // Create New Page Component
 
-Route.put('/:DashUserID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], DashUsers.UpdateDashUserByID); // Force Delete Conference By ID
+Route.post('/', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin, _PageComponentsMiddlewares.CheckConferencePage], PageComponents.CreateNewPageComponent); // Update Page Component By ID
 
-Route["delete"]('/:DashUserID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], DashUsers.ForceDeleteDashUserByID); // Soft Delete Dashboard User By ID
+Route.put('/:PageComponentsID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin, _PageComponentsMiddlewares.CheckConferencePage], PageComponents.UpdatePageComponentByID); // Force Delete Page Component By ID
 
-Route["delete"]('/soft/:DashUserID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], DashUsers.SoftDeleteDashUserByID);
+Route["delete"]('/:PageComponentsID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin, _PageComponentsMiddlewares.CheckConferencePage], PageComponents.ForceDeletePageComponentByID); // Soft Delete Page Component By ID
+
+Route["delete"]('/soft/:PageComponentsID', [_JWTMiddlewares.VerifyDashToken, _DashRolesMiddlewares.DashRolesAdmin], PageComponents.SoftDeletePageComponentByID);
 var _default = Route;
 exports["default"] = _default;

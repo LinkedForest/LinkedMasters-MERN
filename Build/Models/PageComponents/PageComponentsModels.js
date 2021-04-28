@@ -11,45 +11,34 @@ var _mongooseDelete = _interopRequireDefault(require("mongoose-delete"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var ConferencesSchema = new _mongoose.Schema({
+var PageComponentsSchema = new _mongoose.Schema({
   name: {
     type: String,
-    unique: true,
-    required: true,
-    "default": "New Conference"
-  },
-  description: {
-    type: String,
-    required: true,
-    "default": "It's New Conference"
-  },
-  logo: {
-    type: String,
     required: true
   },
-  start_date: {
-    type: Date,
-    required: true,
-    "default": new Date().toISOString()
+  background: {
+    type: String
   },
-  color: {
-    type: String,
-    required: true
+  image: {
+    type: String
   },
-  conference_pages: [{
-    ref: "ConferencePages",
+  theme: {
+    type: String
+  },
+  component_forms: [{
+    ref: "ComponentForms",
     type: _mongoose.Schema.Types.ObjectId
   }]
 }, {
   timestamps: true,
   versionKey: false
 });
-ConferencesSchema.plugin(_mongooseDelete["default"], {
+PageComponentsSchema.plugin(_mongooseDelete["default"], {
   deletedAt: true,
   deletedBy: true,
   overrideMethods: true
 });
 
-var _default = (0, _mongoose.model)('Conferences', ConferencesSchema);
+var _default = (0, _mongoose.model)('PageComponents', PageComponentsSchema);
 
 exports["default"] = _default;

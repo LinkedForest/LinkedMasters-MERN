@@ -13,13 +13,16 @@ var _DashAuthRoutes = _interopRequireDefault(require("./Routes/DashAuth/DashAuth
 
 var _DashUsersRoutes = _interopRequireDefault(require("./Routes/DashUsers/DashUsersRoutes"));
 
+var _ConferencesRoutes = _interopRequireDefault(require("./Routes/Conferences/ConferencesRoutes"));
+
+var _ConferencePagesRoutes = _interopRequireDefault(require("./Routes/ConferencePages/ConferencePagesRoutes"));
+
 var _DashRoles = _interopRequireDefault(require("./Settings/DefaultData/DashRoles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // Import Routes
-// import ConferencesRouters from "./Routes/Conferences/ConferencesRoutes";
-// import ConferencesAuthPagesRouters from "./Routes/Conferences/ConferencesAuthRoutes/ConferencesAuthRoutes";
+// import PageComponentsRouters from "./Routes/PageComponents/PageComponentsRoutes";
 //  Main Application
 var Application = (0, _express["default"])(); // Security Server
 
@@ -44,9 +47,11 @@ var API_URL = process.env.API_URL; // Dashboard Auth Routes
 Application.use("".concat(API_URL, "/dash-auth"), _DashAuthRoutes["default"]); // Dashboard Users Routes
 
 Application.use("".concat(API_URL, "/dashboard/dash-users"), _DashUsersRoutes["default"]); // Conferences Routes
-// Application.use(`${API_URL}/conferences`, ConferencesRouters);
-// Conferences Auth. Pages Routes
-// Application.use(`${API_URL}/conferences/:ConferenceId`, ConferencesAuthPagesRouters);
+
+Application.use("".concat(API_URL, "/conferences"), _ConferencesRoutes["default"]); // Conference Pages Routes
+
+Application.use("".concat(API_URL, "/conference-pages"), _ConferencePagesRoutes["default"]); // Page Components Routes
+// Application.use(`${API_URL}/page-components`, PageComponentsRouters);
 
 var _default = Application;
 exports["default"] = _default;
