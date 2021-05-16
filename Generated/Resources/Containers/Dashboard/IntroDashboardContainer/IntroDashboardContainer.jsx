@@ -14,9 +14,9 @@ import DashboardBody from "../../../Components/Dashboard/DashboardBody/Dashboard
 // Layouts
 import DashboardAnalysisLayout from "../../../Layouts/Dashboard/Analysis/DashboardAnalysis/DashboardAnalysisLayout";
 import NewConferenceLayout from "../../../Layouts/Dashboard/Conferences/NewConference/NewConferenceLayout";
-import ConferencesListLayout from "../../../Layouts/Dashboard/Conferences/ConferencesList/ConferencesListLayout";
-import NewPageLayout from "../../../Layouts/Dashboard/Conferences/NewPage/NewPageLayout";
-import PagesListLayout from "../../../Layouts/Dashboard/Conferences/PagesList/PagesListLayout";
+import ConferencesLayout from "../../../Layouts/Dashboard/Conferences/Conferences/ConferencesLayout";
+import NewConferencePageLayout from "../../../Layouts/Dashboard/Conferences/NewConferencePage/NewConferencePageLayout";
+import ConferencesPagesLayout from "../../../Layouts/Dashboard/Conferences/ConferencesPages/ConferencesPagesLayout";
 
 const IntroDashboardContainer = () => {
     return (
@@ -27,10 +27,10 @@ const IntroDashboardContainer = () => {
                 <DashboardBody>
                     <Switch>
                         <Route exact path="/dashboard" component={DashboardAnalysisLayout} />
-                        <Route exact path="/dashboard/conferences" component={ConferencesListLayout} />
+                        <Route exact path="/dashboard/conferences" component={ConferencesLayout} />
                         <Route exact path="/dashboard/new-conference" component={NewConferenceLayout} />
-                        <Route exact path="/dashboard/pages" component={PagesListLayout} />
-                        <Route exact path="/dashboard/new-page" component={NewPageLayout} />
+                        <Route exact path="/dashboard/pages" component={ConferencesPagesLayout} />
+                        <Route exact path="/dashboard/new-page" component={NewConferencePageLayout} />
                     </Switch>
                 </DashboardBody>
             </Box>

@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     slideButton: {
         color: theme.palette.secondary.main
     },
+    menuButton: {
+        color: theme.palette.primary.contrastText
+    },
     slideButtonNest: {
         color: theme.palette.secondary.light
     },

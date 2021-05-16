@@ -11,7 +11,7 @@ import { AppearanceStore } from '../../../Sources/Stores/Appearance/AppearanceSt
 import { Drawer, Box, IconButton, List, ListItem, ListItemText, Collapse, Typography, ListItemIcon, Divider } from '@material-ui/core';
 
 // Material-UI Components
-import { Adjust, ExpandLess, ExpandMore, Dashboard, EmojiFoodBeverage, Launch, Dns, PostAdd, FileCopy } from '@material-ui/icons';
+import {ExpandLess, ExpandMore, Dashboard, EmojiFoodBeverage, Dns, FileCopy, Menu} from '@material-ui/icons';
 
 // Component Styles
 import useStyles from './DashboardSideMenu_Styles';
@@ -41,8 +41,8 @@ const DashboardSideMenu = () => {
                     <Typography variant="h6" className={clsx(classes.textLogo, {[classes.hide]: !DashSideMenu})} gutterBottom>
                         iBuilder
                     </Typography>
-                    <IconButton onClick={handleDrawerClose} className={clsx(classes.slideButton, {[classes.hide]: !DashSideMenu})}>
-                        <Adjust />
+                    <IconButton onClick={handleDrawerClose} className={clsx(classes.menuButton, {[classes.hide]: !DashSideMenu})}>
+                        <Menu />
                     </IconButton>
                 </Box>
 
@@ -69,32 +69,18 @@ const DashboardSideMenu = () => {
                     <Collapse in={Conferences} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
                             <Divider variant="inset" component="li" />
-                            <ListItem button component={Link} to="/dashboard/new-conference" className={classes.itemButtonNest}>
-                                <ListItemIcon className={classes.slideButtonNest}>
-                                    <Launch />
-                                </ListItemIcon>
-                                <ListItemText primary="New Conference" />
-                            </ListItem>
                             <ListItem button component={Link} to="/dashboard/conferences" className={classes.itemButtonNest}>
                                 <ListItemIcon className={classes.slideButtonNest}>
                                     <Dns />
                                 </ListItemIcon>
-                                <ListItemText primary="Conferences List" />
-                            </ListItem>
-                            <Divider variant="inset" component="li" />
-                            <ListItem button component={Link} to="/dashboard/new-page" className={classes.itemButtonNest}>
-                                <ListItemIcon className={classes.slideButtonNest}>
-                                    <PostAdd />
-                                </ListItemIcon>
-                                <ListItemText primary="New Page" />
+                                <ListItemText primary="Conferences" />
                             </ListItem>
                             <ListItem button component={Link} to="/dashboard/pages" className={classes.itemButtonNest}>
                                 <ListItemIcon className={classes.slideButtonNest}>
                                     <FileCopy />
                                 </ListItemIcon>
-                                <ListItemText primary="Pages List" />
+                                <ListItemText primary="Conferences Pages" />
                             </ListItem>
-                            <Divider variant="inset" component="li" />
                         </List>
                     </Collapse>
                 </List>

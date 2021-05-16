@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const AxiosInstance = (History = null) => {
 
-    const BaseURL = process.env.REACT_APP_DATABASE_URL;
+    const BaseURL = process.env.REACT_APP_API_URL;
     let   Headers = {};
 
     if (localStorage.AuthDashboard) {

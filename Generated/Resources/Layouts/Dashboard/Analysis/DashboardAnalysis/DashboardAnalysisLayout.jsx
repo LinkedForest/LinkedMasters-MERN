@@ -8,7 +8,7 @@ const DashboardAnalysisLayout = () => {
 
     return (
         <React.Fragment>
-            <h1>Dashboard Analysis Layout</h1>
+            <h1 className={classes.root}>Dashboard Analysis Layout</h1>
         </React.Fragment>
     );
 };

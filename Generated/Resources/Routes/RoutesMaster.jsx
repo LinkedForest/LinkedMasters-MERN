@@ -100,9 +100,9 @@ const RoutesMaster = [
                         component: IntroDashboardContainer
                     },
                     {
-                        path: '/dashboard/new-page',
+                        path: '/dashboard/new-conference',
                         exact: true,
-                        title: 'LinkedMasters - New Page',
+                        title: 'LinkedMasters - New Conferences',
                         authRequired: false,
                         component: IntroDashboardContainer
                     },
@@ -114,9 +114,9 @@ const RoutesMaster = [
                         component: IntroDashboardContainer
                     },
                     {
-                        path: '/dashboard/new-conference',
+                        path: '/dashboard/new-page',
                         exact: true,
-                        title: 'LinkedMasters - New Conferences',
+                        title: 'LinkedMasters - New Page',
                         authRequired: false,
                         component: IntroDashboardContainer
                     }

@@ -3,9 +3,6 @@ import React from 'react';
 // Material-UI Components
 import { Typography, Paper, Grid, TextField } from '@material-ui/core';
 
-// Color Picker
-import { ChromePicker } from 'react-color';
-
 // Image Uploader
 import { DropzoneArea } from 'material-ui-dropzone';
 
@@ -34,9 +31,6 @@ const NewConferenceLayout = () => {
                         </Grid>
                         <Grid item md={6}>
                             <TextField fullWidth required id="conference_date" name="conference_date" label="Conference Date" type="datetime-local" InputLabelProps={{shrink: true}} variant="outlined" />
-                        </Grid>
-                        <Grid item md={6}>
-                            <ChromePicker />
                         </Grid>
                     </Grid>
                 </form>

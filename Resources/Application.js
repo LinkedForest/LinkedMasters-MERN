@@ -1,5 +1,6 @@
 import Express from 'express';
 import Morgan from 'morgan';
+import Cors from 'cors';
 
 // Import Routes
 import DashAuthRoutes from "./Routes/DashAuth/DashAuthRoutes";
@@ -11,17 +12,11 @@ import ConferencePagesRouters from "./Routes/ConferencePages/ConferencePagesRout
 //  Init Application
 const Application = Express();
 
+// Security Server
+Application.use(Cors());
+
 // Public Folder
 Application.use('/Public/Uploads', Express.static('Public/Uploads'));
-
-// Security Server
-Application.use((Request, Response, NextFunction) => {
-    Response.setHeader('Access-Control-Allow-Origin', '*');
-    Response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    Response.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, content-type, Accept');
-    Response.setHeader('Access-Control-Allow-Credentials', true);
-    NextFunction();
-});
 
 // Application Settings
 Application.use(Express.json());

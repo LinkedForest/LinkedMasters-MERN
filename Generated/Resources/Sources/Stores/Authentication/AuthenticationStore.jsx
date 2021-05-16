@@ -5,8 +5,8 @@ import AuthDashboardReducers from '../../Reducers/Dashboard/AuthDashboardReducer
 import AuthFrontViewReducers from '../../Reducers/FrontViews/AuthFrontViewReducers';
 
 // Initial
-import AuthDashboardInit from "../../Init/DashboardInit/AuthDashboardInit";
-import AuthFrontViewInit from "../../Init/FrontViewsInit/AuthFrontViewInit";
+import AuthDashboardInit from "../../Init/Dashboard/AuthDashboardInit";
+import AuthFrontViewInit from "../../Init/FrontViews/AuthFrontViewInit";
 
 export const AuthenticationStore = createContext({});
 

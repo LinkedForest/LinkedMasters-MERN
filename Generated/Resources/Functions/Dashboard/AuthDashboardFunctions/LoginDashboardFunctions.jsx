@@ -12,7 +12,6 @@ import LoginDashboardAction from "../../../Sources/Actions/Dashboard/AuthDashboa
 const LoginDashboardFunctions = () => {
     const History = useHistory();
     const [loginDashboard, setLoginDashboard] = useState({});
-
     const {AuthDashboardState: {DashboardAuth: {Loading, Error, Data}}, AuthDashboardDispatch} = useContext(AuthenticationStore);
 
     // Get Form Data
